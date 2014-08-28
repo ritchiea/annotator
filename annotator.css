@@ -1,0 +1,9 @@
+.anotator-form {
+  display: none;
+  background-color: white;
+  color: #474747;
+  z-index: 999999999;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+}
