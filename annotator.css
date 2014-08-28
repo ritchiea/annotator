@@ -1,4 +1,4 @@
-.anotator-form {
+.annotator-form {
   display: none;
   background-color: white;
   color: #474747;
@@ -6,4 +6,6 @@
   position: absolute;
   width: 300px;
   height: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }

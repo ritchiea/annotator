@@ -2,28 +2,34 @@
   if (typeof($) === 'undefined') { $ = window.jQuery; }
 
   function Annotator(options) {
-    this.annotations = options.annotations || [];
-    this.db = options.db;
-    this.target = options.target || window.location.href;
-    this.selector = options.selector || 'body';
+    if (typeof(options) === 'undefined') { var options = {} }
+
+    var config = {}
+    var annotations = this.annotations = options.annotations || [];
+
+    config.db = options.db;
+    config.target = options.target || window.location.href;
+    config.selector = options.selector || 'body';
 
     var form = $('<div>', { id: 'annotator-form', class: 'annotator-form'});
-    $(selector).prepend(form);
+    $(config.selector).prepend(form);
 
     this.push = function(annotation) {
-      this.annotations.push(annotation);
-      return annotation;
+      annotations.push(annotation);
+      return annotations;
     }
 
     this.dataToString = function(options) {
-      return JSON.stringify(annotations);
+      return JSON.stringify(this.annotations);
     }
 
-    $(selector).mousedown(function(e) {
-      // if right click
-      if (e.which === 3) {
+    $(config.selector).mousedown(function(e) {
+      if (!e.target.toString().match(/http/)) {
         e.preventDefault();
-        $('.annotator-form').css({top: e.offsetY, left: e.offsetX }).fadeIn(100)
+        if (e.which === 1) {
+          console.log(e);
+          $('.annotator-form').css({top: e.pageY, left: e.pageX }).fadeIn(100)
+        }
       }
 
     });
