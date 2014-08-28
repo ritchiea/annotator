@@ -10,7 +10,7 @@
   border: 1px solid #ccc;
 }
 
-#annotator-body-input {
+.annotator-body-input {
   line-height: 14pt;
   height: 200px;
   width: 300px;
@@ -26,7 +26,7 @@
   float: right;
 }
 
-#annotator-submit {
+.annotator-submit {
   float: left;
 }
 

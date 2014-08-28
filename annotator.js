@@ -4,6 +4,8 @@
   function Annotator(options) {
     if (typeof(options) === 'undefined') { var options = {} }
 
+    var annotator = this;
+
     var config = {}
     var annotations = this.annotations = options.annotations || [];
     var formDisplayed = false;
@@ -15,15 +17,16 @@
     var form = $('<div>', { id: 'annotator-form', class: 'annotator-form'});
     form.append($('<div>', { class: 'annotator-close', text: 'X' }));
     form.append($('<div>', { class: 'clearfix' }));
-    form.append($('<input>', { id: 'annotator-body-input', type: 'text' }));
-    form.append($('<input>', { id: 'annotator-name-input', type: 'text' }));
-    form.append($('<input>', { id: 'annotator-email-input', type: 'text' }));
-    form.append($('<input>', { id: 'annotator-submit', type: 'submit' }));
+    form.append($('<input>', { class: 'annotator-body-input', type: 'text' }));
+    form.append($('<input>', { class: 'annotator-name-input', type: 'text' }));
+    form.append($('<input>', { class: 'annotator-email-input', type: 'text' }));
+    form.append($('<input>', { class: 'annotator-submit', type: 'submit' }));
     form.append($('<div>', { class: 'clearfix' }));
 
     $(config.selector).prepend(form);
 
     this.push = function(annotation) {
+      annotation.target = config.target;
       annotations.push(annotation);
       return annotations;
     }
@@ -37,12 +40,40 @@
       formDisplayed = false;
     });
 
+    $('#annotator-form input[type="submit"]').click(function(e) {
+      e.preventDefault();
+      $submit = $(this);
+      var annotationData = {};
+      $submit.siblings('input').each(function(index) {
+        var $input = $(this);
+        if ($input.attr('class').match(/body/)) {
+          annotationData.body = $input.val();
+        } else if ($input.attr('class').match(/name/)) {
+          annotationData.name = $input.val();
+        } else if ($input.attr('class').match(/email/)) {
+          annotationData.email = $input.val();
+        }
+      });
+
+      annotator.push(new Annotation(annotationData));
+
+      $submit.parent().fadeOut(100);
+      formDisplayed = false;
+    });
+
+    function updateDb() {
+      $.ajax({ 
+        url: config.db
+      }).done(function() {
+
+      });
+    }
+
     $(config.selector).mousedown(function(e) {
       if (!e.target.toString().match(/http/) && !formDisplayed) {
         e.preventDefault();
         formDisplayed = true;
         if (e.which === 1) {
-          console.log(e);
           $('.annotator-form').css({top: e.pageY, left: e.pageX }).fadeIn(100)
         }
       }
