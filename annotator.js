@@ -6,7 +6,7 @@
 
     var annotator = this;
 
-    var config = {}
+    var config = {};
     var formDisplayed = false;
 
     config.db = options.db || 'https://brilliant-torch-2878.firebaseio.com/';
