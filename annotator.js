@@ -17,7 +17,6 @@
     var data_from_firebase = [];
 
     fireBaseStore.on('value', function (snapshot) {
-      console.log(snapshot.val());
       data_from_firebase = snapshot.val();
       if (Array.isArray(data_from_firebase)) {
         annotator.annotations = data_from_firebase;
@@ -95,7 +94,6 @@
         };
         formDisplayed = true;
         if (e.which === 1) {
-          console.log(e)
           $('.annotator-form')
             .css({top: e.pageY, left: e.pageX })
             .fadeIn(100)
