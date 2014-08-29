@@ -12,7 +12,9 @@ Usage
 
 If you include annotator.js and its dependencies on a page you can instantiate an annotator with a Javascript constructor, e.g.:
 
-`var myAnnotator = new Annotator({selector: 'body', db: 'https://brilliant-torch-2878.firebaseio.com/'});`
+```javascript
+var myAnnotator = new Annotator({selector: 'body', db: 'https://brilliant-torch-2878.firebaseio.com/'});
+```
 
 You can pass the Annotator constructor options such as the address of your firebase instance and a CSS selector for the annotatable content. In this initial example I'm passing 'body' as the selector so the entire DOM is annotatable. You can imagine how it's useful to pass a more specific selector as you may have a page with navigation, a footer, etc. that is not annotatable as well as annotatable content.
 
