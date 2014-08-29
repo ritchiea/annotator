@@ -87,7 +87,8 @@
         var annotatedContent = {
           id: e.target.id,
           classList: e.target.classList,
-          innerHTML: e.target.innerHTML
+          innerHTML: e.target.innerHTML,
+          tagName: e.target.tagName
         };
         formDisplayed = true;
         if (e.which === 1) {
