@@ -8,6 +8,7 @@
   height: 300px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  padding: 1%;
 }
 
 .annotator-body-input {
