@@ -18,9 +18,11 @@
 
     fireBaseStore.on('value', function (snapshot) {
       console.log(snapshot.val());
-      if (!( typeof(snapshot) === 'undefined' )) {
-        data_from_firebase = snapshot.val();
-        annotator.annotations = data_from_firebase || [];
+      data_from_firebase = snapshot.val();
+      if (Array.isArray(data_from_firebase)) {
+        annotator.annotations = data_from_firebase;
+      } else {
+        annotator.annotations = [];
       }
     }, function (errorObject) {
       console.log('The read failed: ' + errorObject.code);
