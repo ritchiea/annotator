@@ -14,11 +14,11 @@
     config.selector = options.selector || 'body';
 
     var fireBaseStore = new Firebase(config.db);
-    var data_from_firebase = [];
+    var dataFromFirebase = [];
 
     fireBaseStore.on('value', function (snapshot) {
-      data_from_firebase = snapshot.val();
-      annotator.annotations = data_from_firebase;
+      dataFromFirebase = snapshot.val();
+      annotator.annotations = dataFromFirebase;
     }, function (errorObject) {
       console.log('The read failed: ' + errorObject.code);
     });
