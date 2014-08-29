@@ -22,6 +22,11 @@
   display: block;
 }
 
+.annotator-form textarea {
+  width: 300px;
+  display: block;
+}
+
 .annotator-close {
   cursor: pointer;
   float: right;
