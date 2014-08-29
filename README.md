@@ -34,4 +34,4 @@ Future
 
 In this implementation each commentable URL would need it's own Firebase instance but in the future it would be an improvement to refactor the Annotator so that the page URL is a key in a key/value store where the value is that page's annotations. 
 
-The other key improvement that I would make next is adding a clickable DOM element to show all comments associated with that element. Currently all the relevant data (id, classList & innerHTML) is stored on an annotation so it would be straightforward to iterate through annotations and add a list of relevant annotations to a given DOM element.
+The other key improvement that I would make next is adding a clickable DOM element to show all comments associated with that element. Currently all the relevant data (`id, classList & innerHTML`) is stored on an annotation so it would be straightforward to iterate through annotations and add a list of relevant annotations to a given DOM element.
