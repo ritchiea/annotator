@@ -24,7 +24,7 @@ When you left click a form pops up. Clicking submit pushes a new comment to Fire
 
 ```javascript
 myAnnotator.annotations;
-{ Object of annotations... }
+-> { Object of annotations... }
 ```
 
 Firebase handles pushing new annotations to an Annotator via an asynchronous callback. 
